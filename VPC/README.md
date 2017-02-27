@@ -4,17 +4,15 @@
 
 2. AWS reserves the first four IP addresses and the last 1 IP address for internal networking purposes. 
 
-From http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#VPC_Sizing
+	From http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#VPC_Sizing
 
-```
-The first four IP addresses and the last IP address in each subnet CIDR block are not available for you to use, and cannot be assigned to an instance. For example, in a subnet with CIDR block 10.0.0.0/24, the following five IP addresses are reserved:
- 
-  * 10.0.0.0: Network address.
-  * 10.0.0.1: Reserved by AWS for the VPC router.
-  * 10.0.0.2: Reserved by AWS. The IP address of the DNS server is always the base of the VPC network range plus two; however, we  also reserve the base of each subnet range plus two. For more information, see Amazon DNS Server.
-  * 10.0.0.3: Reserved by AWS for future use.
-  * 10.0.0.255: Network broadcast address. We do not support broadcast in a VPC, therefore we reserve this address.
-```
+	> The first four IP addresses and the last IP address in each subnet CIDR block are not available for you to use, and cannot be assigned to an instance. For example, in a subnet with CIDR block 10.0.0.0/24, the following five IP addresses are reserved:
+	>
+	>  * 10.0.0.0: Network address.
+	>  * 10.0.0.1: Reserved by AWS for the VPC router.
+	>  * 10.0.0.2: Reserved by AWS. The IP address of the DNS server is always the base of the VPC network range plus two; however, we  also reserve the base of each subnet range plus two. For more information, see Amazon DNS Server.
+	>  * 10.0.0.3: Reserved by AWS for future use.
+	>  * 10.0.0.255: Network broadcast address. We do not support broadcast in a VPC, therefore we reserve this address.
 
 3. AWS services will require a few IP addresses. For example, elastic load balancers requires a number of IP addresses to work and the number will change over time to support scaling and failover.
 
@@ -44,12 +42,12 @@ The first four IP addresses and the last IP address in each subnet CIDR block ar
 
 16. There is a limit on the number of route tables you can create per VPC, and the number of routes you can add per route table. 
 
-  From http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html#vpc-limits-route-tables
+	From http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html#vpc-limits-route-tables
 
-  |Resource|Default limit|Comments|
-  |--------|-------------|--------|
-  |Route tables per VPC|200|Including the main route table. You can associate one route table to one or more subnets in a VPC. If you need to increase this limit, submit a request.|
-  |Routes per route table (non-propagated routes)|50|This is the limit for the number of non-propagated entries per route table. You can submit a request for an increase of up to a maximum of 100; however, network performance may be impacted. This limit is enforced separately for IPv4 routes and IPv6 routes (you can have 50 each, and a maximum of 100 each).|
+	> |Resource|Default limit|Comments|
+	> |--------|-------------|--------|
+	> |Route tables per VPC|200|Including the main route table. You can associate one route table to one or more subnets in a VPC. If you need to increase this limit, submit a request.|
+	> |Routes per route table (non-propagated routes)|50|This is the limit for the number of non-propagated entries per route table. You can submit a request for an increase of up to a maximum of 100; however, network performance may be impacted. This limit is enforced separately for IPv4 routes and IPv6 routes (you can have 50 each, and a maximum of 100 each).|
 
 17. You should leave the main route table in its original default state (with only the local route), and explicitly associate each new subnet you create with one of the custom route tables you've created. This ensures that you explicitly control how each subnet routes outbound traffic.
 
