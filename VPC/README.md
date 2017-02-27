@@ -2,7 +2,17 @@
 
 * The max number of hosts you can have in any VPC is a /16. 
 
-* AWS reserves the first four IP addresses and the last 1 IP address for internal networking purposes.
+* AWS reserves the first four IP addresses and the last 1 IP address for internal networking purposes. 
+
+From http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#VPC_Sizing
+
+> The first four IP addresses and the last IP address in each subnet CIDR block are not available for you to use, and cannot be > assigned to an instance. For example, in a subnet with CIDR block 10.0.0.0/24, the following five IP addresses are reserved:
+> 
+> 10.0.0.0: Network address.
+> 10.0.0.1: Reserved by AWS for the VPC router.
+> 10.0.0.2: Reserved by AWS. The IP address of the DNS server is always the base of the VPC network range plus two; however, we > also reserve the base of each subnet range plus two. For more information, see Amazon DNS Server.
+> 10.0.0.3: Reserved by AWS for future use.
+> 10.0.0.255: Network broadcast address. We do not support broadcast in a VPC, therefore we reserve this address.
 
 * AWS services will require a few IP addresses. For example, elastic load balancers requires a number of IP addresses to work and the number will change over time to support scaling and failover.
 
