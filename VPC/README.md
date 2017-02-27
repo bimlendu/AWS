@@ -42,7 +42,14 @@ The first four IP addresses and the last IP address in each subnet CIDR block ar
 
 15. When you add an Internet gateway, an egress-only Internet gateway, a virtual private gateway, a NAT device, a peering connection, or a VPC endpoint in your VPC, you must update the route table for any subnet that uses these gateways or connections. All public subnets share a single route table, but each private subnet has its own. So this has to be done for all private subnet routes.
 
-16. There is a limit on the number of route tables you can create per VPC, and the number of routes you can add per route table. http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html#vpc-limits-route-tables
+16. There is a limit on the number of route tables you can create per VPC, and the number of routes you can add per route table. 
+
+From http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html#vpc-limits-route-tables
+
+|Resource|Default limit|Comments|
+|--------|-------------|--------|
+|Route tables per VPC|200|Including the main route table. You can associate one route table to one or more subnets in a VPC. If you need to increase this limit, submit a request.|
+Routes per route table (non-propagated routes)|50|This is the limit for the number of non-propagated entries per route table. You can submit a request for an increase of up to a maximum of 100; however, network performance may be impacted. This limit is enforced separately for IPv4 routes and IPv6 routes (you can have 50 each, and a maximum of 100 each).|
 
 17. You should leave the main route table in its original default state (with only the local route), and explicitly associate each new subnet you create with one of the custom route tables you've created. This ensures that you explicitly control how each subnet routes outbound traffic.
 
