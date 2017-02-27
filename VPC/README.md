@@ -7,7 +7,7 @@
 From http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#VPC_Sizing
 
 ```
-The first four IP addresses and the last IP address in each subnet CIDR block are not available for you to use, and cannot be > assigned to an instance. For example, in a subnet with CIDR block 10.0.0.0/24, the following five IP addresses are reserved:
+The first four IP addresses and the last IP address in each subnet CIDR block are not available for you to use, and cannot be assigned to an instance. For example, in a subnet with CIDR block 10.0.0.0/24, the following five IP addresses are reserved:
  
   * 10.0.0.0: Network address.
   * 10.0.0.1: Reserved by AWS for the VPC router.
